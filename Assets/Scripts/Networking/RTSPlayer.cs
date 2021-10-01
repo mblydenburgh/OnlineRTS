@@ -5,6 +5,10 @@ using UnityEngine;
 public class RTSPlayer : NetworkBehaviour {
     [SerializeField] private List<Unit> playerUnits = new List<Unit>();
 
+    public List<Unit> GetPlayerUnits() {
+        return playerUnits;
+    }
+    
     #region Server
 
     public override void OnStartServer() {
