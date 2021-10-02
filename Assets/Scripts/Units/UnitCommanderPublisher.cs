@@ -25,6 +25,7 @@ public class UnitCommanderPublisher : MonoBehaviour {
                 TryMove(hit.point);
                 return;
             }
+
             Debug.Log("Hit enemy target");
             TryTarget(target);
             return;
@@ -43,7 +44,9 @@ public class UnitCommanderPublisher : MonoBehaviour {
     private void TryTarget(Targetable target) {
         Debug.Log("Trying to target with selected units");
         foreach (var unit in unitSelectionHandler.SelectedUnits) {
-            unit.GetTargeter().CmdSetTarget(target.gameObject);
+            Targeter unitTargeter = unit.GetTargeter();
+            Debug.Log("Got unit targeter");
+            unitTargeter.CmdSetTarget(target.gameObject);
         }
     }
 }
