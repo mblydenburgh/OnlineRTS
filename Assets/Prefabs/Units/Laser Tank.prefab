@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2154027836109778720}
   - component: {fileID: 1294000959670947062}
   - component: {fileID: 6951737697590237709}
+  - component: {fileID: 102193145554614632}
   m_Layer: 0
   m_Name: Laser Tank
   m_TagString: Untagged
@@ -182,7 +183,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490629861461615431}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.6, y: 2.52, z: 3.65}
@@ -236,6 +237,21 @@ MonoBehaviour:
   attackRange: 11
   attackRate: 1.5
   rotationSpeed: 180
+--- !u!114 &102193145554614632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490629861461615431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe11e4c1c00348d69a27fb23db07701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  maxHealth: 100
 --- !u!1 &2567394029411003697
 GameObject:
   m_ObjectHideFlags: 0
