@@ -86,6 +86,8 @@ public class UnitSelectionHandler : MonoBehaviour {
         Vector2 max = unitSelectionArea.anchoredPosition + (unitSelectionArea.sizeDelta / 2);
 
         foreach (var playerUnit in player.GetPlayerUnits()) {
+            if (SelectedUnits.Contains(playerUnit)) continue;
+            
             Vector3 screenPosition = mainCamera.WorldToScreenPoint(playerUnit.transform.position);
 
             if (screenPosition.x > min.x && screenPosition.x < max.x && screenPosition.y > min.y &&
