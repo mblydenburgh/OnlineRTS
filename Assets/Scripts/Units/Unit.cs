@@ -14,14 +14,7 @@ public class Unit : NetworkBehaviour {
     }
 
     public Targeter GetTargeter() {
-        Debug.Log("Try to get unit target");
-        if (targeter == null) {
-            Debug.Log("Targeter is null");    
-        }
-        Debug.Log("Returning");
-
         return targeter;
-        
     }
 
     public static event Action<Unit> ServerOnUnitSpawned;
