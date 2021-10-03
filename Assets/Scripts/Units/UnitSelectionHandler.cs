@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
@@ -15,10 +14,12 @@ public class UnitSelectionHandler : MonoBehaviour {
     private void Start() {
         mainCamera = Camera.main;
         Unit.AuthorityOnUnitDespawned += HandleAuthorityOnUnitDespawned;
+        GameOverHandler.ClientOnGameOver += HandleClientGameOver;
     }
 
     private void OnDestroy() {
         Unit.AuthorityOnUnitDespawned -= HandleAuthorityOnUnitDespawned;
+        GameOverHandler.ClientOnGameOver -= HandleClientGameOver;
     }
 
     private void Update() {
@@ -106,5 +107,10 @@ public class UnitSelectionHandler : MonoBehaviour {
 
     private void HandleAuthorityOnUnitDespawned(Unit unit) {
         SelectedUnits.Remove(unit);
+    }
+
+    private void HandleClientGameOver(string name) {
+        // Stop selection handler on game over
+        enabled = false;
     }
 }

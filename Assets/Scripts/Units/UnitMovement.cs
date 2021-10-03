@@ -1,6 +1,4 @@
-using System;
 using Mirror;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +10,14 @@ public class UnitMovement : NetworkBehaviour {
     private Camera mainCamera;
 
     #region Server
+
+    public override void OnStartServer() {
+        GameOverHandler.ServerOnGameOver += ServerHandleOnGameOver;
+    }
+
+    public override void OnStopServer() {
+        GameOverHandler.ServerOnGameOver += ServerHandleOnGameOver;
+    }
 
     [ServerCallback]
     private void Update() {
@@ -42,6 +48,10 @@ public class UnitMovement : NetworkBehaviour {
         if (!NavMesh.SamplePosition(position, out NavMeshHit hit, 1f, NavMesh.AllAreas)) return;
         
         agent.SetDestination(hit.position);
+    }
+
+    private void ServerHandleOnGameOver() {
+        agent.ResetPath();
     }
 
     #endregion

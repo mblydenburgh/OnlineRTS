@@ -299,11 +299,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 973721398727837649, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 973721398727837649, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 973721398727837649, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_RootOrder
@@ -363,11 +363,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 973721398727837649, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.511
+      value: -0.010999918
       objectReference: {fileID: 0}
     - target: {fileID: 973721398727837649, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.567
+      value: 1.667
       objectReference: {fileID: 0}
     - target: {fileID: 973721398727837649, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

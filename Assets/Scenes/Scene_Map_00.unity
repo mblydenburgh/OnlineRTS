@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 52291255}
   - component: {fileID: 52291254}
   - component: {fileID: 52291253}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
   unitSelectionArea: {fileID: 1188314614}
 --- !u!4 &832034297
 Transform:
@@ -405,7 +405,7 @@ MonoBehaviour:
   unitSelectionHandler: {fileID: 832034296}
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1281
 --- !u!1001 &914220871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1050,7 +1050,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -3.0316488e-13, y: -6.3424417e-28, z: 6.344131e-17, w: NaN}
+  m_BoundingSphereOverride: {x: 2.4e-44, y: 1.6966e-41, z: 6e-44, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

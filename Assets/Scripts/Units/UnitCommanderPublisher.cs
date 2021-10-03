@@ -9,6 +9,11 @@ public class UnitCommanderPublisher : MonoBehaviour {
 
     private void Start() {
         mainCamera = Camera.main;
+        GameOverHandler.ClientOnGameOver += ClientHandleGameOver;
+    }
+
+    private void OnDestroy() {
+        GameOverHandler.ClientOnGameOver -= ClientHandleGameOver;
     }
 
     private void Update() {
@@ -45,5 +50,9 @@ public class UnitCommanderPublisher : MonoBehaviour {
             Targeter unitTargeter = unit.GetTargeter();
             unitTargeter.CmdSetTarget(target.gameObject);
         }
+    }
+
+    private void ClientHandleGameOver(string name) {
+        enabled = false;
     }
 }

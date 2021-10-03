@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 6951737697590237709}
   - component: {fileID: 102193145554614632}
   - component: {fileID: 3683545295618356297}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Laser Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,11 +422,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 973721398727837649, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 973721398727837649, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 973721398727837649, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_RootOrder
@@ -486,11 +486,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 973721398727837649, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.99
+      value: 0.00999999
       objectReference: {fileID: 0}
     - target: {fileID: 973721398727837649, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.603
+      value: 2.703
       objectReference: {fileID: 0}
     - target: {fileID: 973721398727837649, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -510,7 +510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5032149251001279312, guid: 60cab1293347f48568c41e86a680cebb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60cab1293347f48568c41e86a680cebb, type: 3}

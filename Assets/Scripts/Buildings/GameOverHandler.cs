@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using Mirror;
-using UnityEngine;
 
 public class GameOverHandler : NetworkBehaviour {
 
     private List<UnitBase> bases = new List<UnitBase>();
 
+    public static event Action ServerOnGameOver;
     public static event Action<string> ClientOnGameOver;
 
     #region Server
@@ -23,20 +23,17 @@ public class GameOverHandler : NetworkBehaviour {
 
     [Server]
     private void HandleBaseSpawned(UnitBase unitBase) {
-        Debug.Log("Adding base");
         bases.Add(unitBase);
-        Debug.Log($"Total bases {bases.Count}");
     }
     
     [Server]
     private void HandleBaseDespawned(UnitBase unitBase) {
-        Debug.Log("Removing bases");
         bases.Remove(unitBase);
-        Debug.Log($"Base count: {bases.Count}");
         if (bases.Count == 1) {
             int winner = bases[0].connectionToClient.connectionId;
             RpcGameOver($"Player {winner}");
         }
+        ServerOnGameOver?.Invoke();
     }
 
     #endregion
