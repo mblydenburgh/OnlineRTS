@@ -177,6 +177,7 @@ MonoBehaviour:
         m_CallState: 2
   unitMovement: {fileID: 5340219047887738256}
   targeter: {fileID: 1294000959670947062}
+  health: {fileID: 102193145554614632}
 --- !u!65 &7140829967703248582
 BoxCollider:
   m_ObjectHideFlags: 0

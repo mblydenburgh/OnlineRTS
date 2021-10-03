@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
@@ -13,6 +14,11 @@ public class UnitSelectionHandler : MonoBehaviour {
 
     private void Start() {
         mainCamera = Camera.main;
+        Unit.AuthorityOnUnitDespawned += HandleAuthorityOnUnitDespawned;
+    }
+
+    private void OnDestroy() {
+        Unit.AuthorityOnUnitDespawned -= HandleAuthorityOnUnitDespawned;
     }
 
     private void Update() {
@@ -96,5 +102,9 @@ public class UnitSelectionHandler : MonoBehaviour {
                 playerUnit.Select();
             }
         }
+    }
+
+    private void HandleAuthorityOnUnitDespawned(Unit unit) {
+        SelectedUnits.Remove(unit);
     }
 }
