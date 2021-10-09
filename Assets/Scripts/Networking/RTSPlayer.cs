@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
 
 public class RTSPlayer : NetworkBehaviour {
+    [SerializeField] private Building[] buildings = Array.Empty<Building>();
+
     private List<Unit> playerUnits = new List<Unit>();
     private List<Building> playerBuildings = new List<Building>();
 
@@ -30,6 +33,22 @@ public class RTSPlayer : NetworkBehaviour {
         Building.ServerOnBuildingDespawned -= ServerHandleBuildingDespawned;
     }
 
+    [Command]
+    public void CmdTryPlaceBuilding(int buildingId, Vector3 location) {
+        Building buildingToPlace = null;
+        foreach (var building in buildings) {
+            if (building.GetId() == buildingId) {
+                buildingToPlace = building;
+                break;
+            }
+        }
+
+        if (buildingToPlace == null) return;
+        GameObject buildingInstance =
+            Instantiate(buildingToPlace.gameObject, location, buildingToPlace.transform.rotation);
+        NetworkServer.Spawn(buildingInstance, connectionToClient);
+    }
+
     private void ServerHandlerUnitSpawned(Unit unit) {
         if (unit.connectionToClient.connectionId != connectionToClient.connectionId) return;
         playerUnits.Add(unit);
@@ -44,7 +63,7 @@ public class RTSPlayer : NetworkBehaviour {
         if (building.connectionToClient.connectionId != connectionToClient.connectionId) return;
         playerBuildings.Add(building);
     }
-    
+
     private void ServerHandleBuildingDespawned(Building building) {
         if (building.connectionToClient.connectionId != connectionToClient.connectionId) return;
         playerBuildings.Remove(building);
@@ -73,7 +92,7 @@ public class RTSPlayer : NetworkBehaviour {
     private void AuthorityHandlerUnitSpawned(Unit unit) {
         playerUnits.Add(unit);
     }
-    
+
     private void AuthorityHandlerUnitDespawned(Unit unit) {
         playerUnits.Remove(unit);
     }
@@ -81,7 +100,7 @@ public class RTSPlayer : NetworkBehaviour {
     private void AuthorityHandleBuildingSpawned(Building building) {
         playerBuildings.Add(building);
     }
-    
+
     private void AuthorityHandleBuildingDespawned(Building building) {
         playerBuildings.Remove(building);
     }

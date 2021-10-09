@@ -32,43 +32,15 @@ public class BuildingButton : MonoBehaviour, IPointerClickHandler {
         if (buildingPreviewInstance == null) return;
 
         UpdateBuildingPreviewPosition();
-        if (Mouse.current.leftButton.wasPressedThisFrame && previewMode == true) {
-            Debug.Log("click while preview mode is true");
-            if (buildingPreviewInstance != null) {
-                Debug.Log("Placing building");
-            }
-        }
+        PlaceBuilding();
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        Debug.Log("Click");
-        if (eventData.button == PointerEventData.InputButton.Right) {
-            if (buildingPreviewInstance != null) {
-                Debug.Log("Clicked right mouse button, destroying preview");    
-            }
-            Debug.Log("Clicked right mouse button, no preview to destroy");
-        }
 
         if (eventData.button == PointerEventData.InputButton.Left) {
-            if (previewMode == true) {
-                Debug.Log("Clicked when preview mode is true");
-                // Do raycast to build
-                Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, floorMask)) {
-                    Debug.Log("Clicked at a valid point, placing building");
-                    // Place building and delete    
-                } else {
-                    Debug.Log("invalid raycast, cant place");
-                }
-                Debug.Log("Destroying building instance");
-                Destroy(buildingPreviewInstance);
-            }
-
-            Debug.Log("Clicked when preview mode is false");
-            // instantiate the instance, assign the renderer, set preview mode, and default the preview to invis
+            // instantiate the preview instance, assign the renderer, set preview mode, and default to invis
             buildingPreviewInstance = Instantiate(building.GetBuildingPreview());
             buildingRendererInstance = buildingPreviewInstance.GetComponentInChildren<Renderer>();
-            Debug.Log("Setting preview mode to true");
             previewMode = true;
             buildingPreviewInstance.SetActive(false);    
         }
@@ -83,8 +55,24 @@ public class BuildingButton : MonoBehaviour, IPointerClickHandler {
         
         // if the update point is valid, set the preview active
         if (buildingPreviewInstance.activeSelf == false) {
-            Debug.Log("Raycast hit valid point, turning on preview");
             buildingPreviewInstance.SetActive(true);
+        }
+    }
+
+    private void PlaceBuilding() {
+        if (Mouse.current.leftButton.wasPressedThisFrame && previewMode == true) {
+            Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, floorMask)) {
+                player.CmdTryPlaceBuilding(building.GetId(), hit.point);    
+            }
+        }
+
+        if (Mouse.current.rightButton.wasPressedThisFrame && previewMode == true) {
+            if (buildingPreviewInstance != null) {
+                buildingPreviewInstance.SetActive(false);
+                Destroy(buildingPreviewInstance);
+                previewMode = false;
+            }
         }
     }
 }

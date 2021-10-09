@@ -53,9 +53,9 @@ public class Unit : NetworkBehaviour {
         AuthorityOnUnitDespawned?.Invoke(this);
     }
 
+    [Client]
     public void Select() {
         if (!hasAuthority) return;
-
         onSelected?.Invoke();
     }
 
