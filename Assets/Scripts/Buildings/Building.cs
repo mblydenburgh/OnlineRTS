@@ -2,6 +2,7 @@ using System;
 using Mirror;
 using UnityEngine;
 
+[Serializable]
 public class Building : NetworkBehaviour {
     [SerializeField] private Sprite icon = null;
     [SerializeField] private int id = -1;
